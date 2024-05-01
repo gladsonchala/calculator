@@ -18,11 +18,11 @@ class Display extends StatelessWidget {
         ),
       ),
       padding: const EdgeInsets.all(8),
-      height: 50,
+      height: 70,
       child: Text(
         text,
         style: const TextStyle(
-          fontSize: 20,
+          fontSize: 40,
           fontWeight: FontWeight.bold,
         ),
       ),

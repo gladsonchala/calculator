@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Calculator',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.deepOrange,
@@ -58,7 +58,9 @@ class _MyHomePageState extends State<MyHomePage> {
       updateDisplay('0');
       calculator.reset();
     } else if (operation == '+/-') {
-    updateDisplay(displayText.startsWith('-') ? displayText.substring(1) : '-$displayText');
+      updateDisplay(displayText.startsWith('-')
+          ? displayText.substring(1)
+          : '-$displayText');
     } else {
       calculator.num1 = double.parse(displayText);
       calculator.sign = operation;
@@ -70,8 +72,17 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 80,
+        centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text("Basic Calculator"),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(20),
+            bottomRight: Radius.circular(20),
+          ),
+        ),
+        elevation: 20,
       ),
       body: Center(
         child: Column(
@@ -104,13 +115,13 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 SignButton(
                   text: "+/-",
-                  btnColor: const Color.fromARGB(255, 205, 179, 255),
+                  btnColor: Theme.of(context).colorScheme.inversePrimary,
                   onPressed: () => handleOperationPress("+/-"),
                 ),
                 NumberButton(num: 0, onPressed: () => handleNumberPress(0)),
                 SignButton(
                   text: "%",
-                  btnColor: const Color.fromARGB(255, 205, 179, 255),
+                  btnColor: Theme.of(context).colorScheme.inversePrimary,
                   onPressed: () => handleOperationPress("%"),
                 ),
               ],
@@ -119,17 +130,17 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 SignButton(
                   text: "+",
-                  btnColor: const Color.fromARGB(255, 205, 179, 255),
+                  btnColor: Theme.of(context).colorScheme.inversePrimary,
                   onPressed: () => handleOperationPress("+"),
                 ),
                 SignButton(
                   text: "-",
-                  btnColor: const Color.fromARGB(255, 205, 179, 255),
+                  btnColor: Theme.of(context).colorScheme.inversePrimary,
                   onPressed: () => handleOperationPress("-"),
                 ),
                 SignButton(
                   text: "x",
-                  btnColor: const Color.fromARGB(255, 205, 179, 255),
+                  btnColor: Theme.of(context).colorScheme.inversePrimary,
                   onPressed: () => handleOperationPress("*"),
                 ),
               ],
@@ -138,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 SignButton(
                   text: "/",
-                  btnColor: const Color.fromARGB(255, 205, 179, 255),
+                  btnColor: Theme.of(context).colorScheme.inversePrimary,
                   onPressed: () => handleOperationPress("/"),
                 ),
                 SignButton(
@@ -148,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 SignButton(
                   text: "C",
-                  btnColor: const Color.fromARGB(255, 255, 109, 109),
+                  btnColor: const Color.fromARGB(255, 255, 58, 58),
                   onPressed: () => handleOperationPress("C"),
                 ),
               ],
