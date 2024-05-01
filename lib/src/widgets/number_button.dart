@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 
 class NumberButton extends StatelessWidget {
   final int num;
+  final VoidCallback onPressed;
 
-  const NumberButton({super.key, required this.num});
+  const NumberButton({Key? key, required this.num, required this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(5),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         child: Container(
           alignment: Alignment.center,
           width: 35,
