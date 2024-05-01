@@ -5,7 +5,7 @@ class SignButton extends StatelessWidget {
   final Color btnColor;
   final VoidCallback onPressed;
 
-  const SignButton({Key? key, required this.text, required this.btnColor, required this.onPressed}) : super(key: key);
+  const SignButton({super.key, required this.text, required this.btnColor, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
