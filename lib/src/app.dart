@@ -50,12 +50,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void handleOperationPress(String operation) {
     if (operation == '=') {
+      calculator.num2 = double.parse(displayText);
       double result = calculator.calculate();
       updateDisplay(result.toString());
       calculator.reset();
     } else if (operation == 'C') {
       updateDisplay('0');
       calculator.reset();
+    } else if (operation == '+/-') {
+    updateDisplay(displayText.startsWith('-') ? displayText.substring(1) : '-$displayText');
     } else {
       calculator.num1 = double.parse(displayText);
       calculator.sign = operation;
@@ -95,6 +98,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 NumberButton(num: 1, onPressed: () => handleNumberPress(1)),
                 NumberButton(num: 2, onPressed: () => handleNumberPress(2)),
                 NumberButton(num: 3, onPressed: () => handleNumberPress(3)),
+              ],
+            ),
+            Row(
+              children: [
+                SignButton(
+                  text: "+/-",
+                  btnColor: const Color.fromARGB(255, 205, 179, 255),
+                  onPressed: () => handleOperationPress("+/-"),
+                ),
+                NumberButton(num: 0, onPressed: () => handleNumberPress(0)),
+                SignButton(
+                  text: "%",
+                  btnColor: const Color.fromARGB(255, 205, 179, 255),
+                  onPressed: () => handleOperationPress("%"),
+                ),
               ],
             ),
             Row(
